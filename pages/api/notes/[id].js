@@ -4,6 +4,8 @@ import Note from "../../../models/Note"
 dbConnect();
 
 export default async (req, res) => {
+
+    //destructure the req object
     const {
         query: { id },
         method
@@ -26,6 +28,7 @@ export default async (req, res) => {
         case 'PUT':
             try {
                 const note = await Note.findByIdAndUpdate(id, req.body, {
+                    //property of new is true
                     new: true,
                     runValidators: true
                 });
